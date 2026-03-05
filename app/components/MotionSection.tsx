@@ -1,0 +1,73 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const smoothEase = [0.33, 1, 0.68, 1] as const;
+
+export function FadeUp({
+  children,
+  className,
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px", amount: 0.2 }}
+      transition={{ duration: 0.65, delay, ease: smoothEase }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerContainer({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      className={className}
+      initial="initial"
+      whileInView="whileInView"
+      viewport={{ once: true, margin: "-60px", amount: 0.15 }}
+      variants={{
+        initial: {},
+        whileInView: {
+          transition: { staggerChildren: 0.07, delayChildren: 0.12 },
+        },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+export function StaggerItem({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <motion.div
+      className={className}
+      variants={{
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+      }}
+      transition={{ duration: 0.55, ease: smoothEase }}
+    >
+      {children}
+    </motion.div>
+  );
+}
