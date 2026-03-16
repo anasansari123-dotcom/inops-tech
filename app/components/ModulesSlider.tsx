@@ -3,8 +3,8 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 
-const CARD_WIDTH = 260;
-const CARD_GAP = 16;
+const CARD_WIDTH = 320;
+const CARD_GAP = 0;
 const AUTO_SCROLL_INTERVAL_MS = 4000;
 const SCROLL_STEP = CARD_WIDTH + CARD_GAP;
 
@@ -12,42 +12,42 @@ const modules = [
   {
     title: "Time, Attendance & Leave",
     description: "Accurate tracking of employee hours and leave for better productivity and compliance.",
-    imageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?w=900&q=85",
   },
   {
     title: "KYE - Employee Verification",
     description: "Next-Gen CLMs through AI for document verification, challans, records, with smart reporting & analytics.",
-    imageUrl: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1556740749-887f6717d7e4?w=900&q=85",
   },
   {
     title: "Visitor Management",
     description: "Secure visitor tracking with seamless check-in/out processes.",
-    imageUrl: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&q=85",
   },
   {
     title: "Contractor & Payroll",
     description: "End-to-end contractor lifecycle and payroll processing with statutory compliance.",
-    imageUrl: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1604594849809-dfedbc827105?w=900&q=85",
   },
   {
     title: "Compliance & Reporting",
     description: "Automated PF, ESIC, and labour law reporting with audit-ready documentation.",
-    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=900&q=85",
   },
   {
     title: "Access Control & Security",
     description: "Biometric and card-based access control with real-time monitoring.",
-    imageUrl: "https://images.unsplash.com/photo-1557597774-9d273605dfa9?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1495433324511-bf8e92934d90?w=900&q=85",
   },
   {
     title: "Shift & Roster Management",
     description: "Plan shifts, manage rosters, and handle overtime with ease.",
-    imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1553877522-43269d4ea984?w=900&q=85",
   },
   {
     title: "Analytics & Dashboards",
     description: "Real-time insights and reports for workforce and compliance metrics.",
-    imageUrl: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&q=80",
+    imageUrl: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=900&q=85",
   },
 ];
 
@@ -61,19 +61,19 @@ function ModuleCard({
   imageUrl: string;
 }) {
   return (
-    <div className="group relative h-[280px] w-[260px] flex-shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-gray-100 shadow-md transition-all duration-300 hover:shadow-lg hover:border-blue-200">
+    <div className="group relative h-[320px] w-[320px] flex-shrink-0 overflow-hidden transition-transform duration-300">
       <Image
         src={imageUrl}
         alt={title}
         fill
-        className="object-cover transition duration-500 group-hover:scale-105"
-        sizes="260px"
+        className="object-cover object-center transition duration-500 group-hover:scale-105"
+        sizes="320px"
       />
       {/* Hover overlay: title + description */}
       <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/85 via-black/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
         <div className="p-4 text-white">
-          <h3 className="text-base font-heading leading-tight">{title}</h3>
-          <p className="mt-1.5 line-clamp-3 text-xs leading-relaxed text-white/90">{description}</p>
+          <h3 className="text-sm sm:text-base font-heading leading-tight">{title}</h3>
+          <p className="mt-1.5 line-clamp-3 text-[11px] sm:text-xs leading-relaxed text-white/90">{description}</p>
         </div>
       </div>
     </div>
@@ -106,16 +106,16 @@ export default function ModulesSlider() {
   }, []);
 
   return (
-    <section id="solutions" className="relative py-28 lg:py-40 bg-gray-50">
-      <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
+    <section id="solutions" className="relative py-28 lg:py-40">
+      <div className="relative mx-auto max-w-full lg:px-12">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-stretch lg:gap-12">
           {/* Left: text block */}
-          <div className="flex flex-shrink-0 flex-col justify-center lg:w-[28%] xl:w-[26%]">
+          <div className="flex flex-shrink-0 flex-col justify-center items-center text-center lg:items-start lg:text-left lg:w-[28%] xl:w-[26%]">
             <span className="section-badge">Solutions</span>
             <h2 className="mt-4 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
               Our Modules
             </h2>
-            <p className="mt-3 max-w-sm text-gray-600">
+            <p className="mt-3 max-w-sm text-gray-600 mx-auto lg:mx-0">
               End-to-end tools for time, compliance, and workforce management
             </p>
             <div className="mt-4 h-0.5 w-12 rounded-full bg-blue-500" />
@@ -129,8 +129,8 @@ export default function ModulesSlider() {
           </div>
 
           {/* Right: slider with reduced width */}
-          <div className="relative flex-1 min-w-0 lg:max-w-[72%] xl:max-w-[70%]">
-            <div className="relative flex items-center gap-2">
+          <div className="relative flex-1 min-w-0 lg:max-w-[72%] xl:max-w-[72%]">
+            <div className="relative flex items-center">
               <button
                 type="button"
                 onClick={() => scroll("left")}
@@ -142,11 +142,7 @@ export default function ModulesSlider() {
                 </svg>
               </button>
 
-              <div
-                ref={scrollRef}
-                className="flex gap-4 overflow-x-auto scroll-smooth py-2 px-12 scrollbar-hide"
-                style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-              >
+              <div ref={scrollRef} className="flex gap-0 overflow-x-auto scroll-smooth py-4 px-14 scrollbar-hide" style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}>
                 {modules.map((mod, i) => (
                   <ModuleCard
                     key={`${mod.title}-${i}`}

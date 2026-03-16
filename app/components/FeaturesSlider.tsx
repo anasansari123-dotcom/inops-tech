@@ -105,25 +105,20 @@ export default function FeaturesSlider() {
             </motion.div>
 
             <motion.div
-              className="w-full md:w-[320px] flex-shrink-0 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-200 p-4 flex items-center justify-center"
+              className="w-full md:w-[40%] lg:w-[38%] flex-shrink-0 bg-gray-50 border-t md:border-t-0 md:border-l border-gray-200 p-5 md:p-6 flex items-stretch"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={viewport}
               transition={{ duration: 0.7, ease: smoothEase, delay: 0.15 }}
             >
-              <div className="relative w-full h-[180px] rounded-xl overflow-hidden shadow-md border border-gray-200">
+              <div className="relative w-full h-full min-h-[220px] rounded-xl overflow-hidden shadow-md border border-gray-200">
                 <div className="absolute top-0 left-0 right-0 h-7 bg-gray-100 border-b border-gray-200 flex items-center px-3 gap-2 z-10">
                   <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
                   <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
                   <span className="w-2 h-2 bg-gray-300 rounded-full"></span>
                 </div>
 
-                <Image
-                  src={slide.imageUrl}
-                  alt="Dashboard Preview"
-                  fill
-                  className="object-cover pt-7"
-                />
+                <Image src={slide.imageUrl} alt="Dashboard Preview" fill className="object-cover pt-7" sizes="(max-width: 768px) 100vw, 40vw" />
               </div>
             </motion.div>
           </div>

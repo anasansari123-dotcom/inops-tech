@@ -146,7 +146,7 @@ export default function Home() {
       </SectionFade>
 
       {/* Why Inops */}
-      <AnimatedSection id="about" className="relative py-28 lg:py-40 bg-gray-50">
+      <AnimatedSection id="about" className="relative py-28 lg:py-40 bg-white">
         <div className="relative mx-auto max-w-7xl px-6 lg:px-12">
           <div className="text-center">
             <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-label uppercase tracking-wider text-blue-700">
@@ -263,7 +263,7 @@ export default function Home() {
             </div>
           </motion.div>
           <motion.div
-            className="flex flex-col justify-center bg-gray-50 px-8 py-20 lg:px-16 lg:py-28"
+            className="flex flex-col justify-center bg-white px-8 py-20 lg:px-16 lg:py-28"
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -325,157 +325,156 @@ export default function Home() {
 
       <SectionFade><IndustriesSlider /></SectionFade>
 
-      {/* No More Ghost Employees */}
+      {/* Feature cards + logo strip (single bordered container) */}
       <SectionFade>
-        <section className="relative py-28 lg:py-40 bg-gray-50">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-6 lg:flex-row lg:gap-24 lg:px-12">
-            <motion.div
-              className="relative flex-shrink-0 lg:order-1"
-              initial={{ opacity: 0, x: 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
-            >
-              <TiltCard className="block">
-                <div className="relative aspect-square w-80 overflow-hidden rounded-2">
-                  <Image src="/Ghost employees.png" alt="Worker at biometric gate" fill className="object-cover object-center" sizes="(max-width: 1024px) 320px, 448px" />
-                </div>
-              </TiltCard>
-            </motion.div>
-            <motion.div
-              className="flex flex-1 flex-col justify-center text-center lg:order-2 lg:text-left"
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
-            >
-              <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-                No More Ghost Employees — Just Verified Workforce
-              </h2>
-              <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
-                Eliminate ghost employees with biometric authentication, real-time tracking, and geofencing. Automated payroll and audit trails ensure accurate records, prevent fraud, and keep your workforce fully compliant.
-              </p>
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
-                  Start A Project
-                </Link>
-                <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                    <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                  </span>
-                  <span className="font-button">Call Us: 08027745220</span>
-                </a>
-                <span className="text-sm font-body text-gray-500">For any question</span>
+        <div className="max-w-full">
+          <div className="overflow-hidden rounded-3xl border-2 border-b-0 border-blue-200 bg-white shadow-lg mr-[-5]">
+            {/* No More Ghost Employees */}
+            <section className="relative py-20 lg:py-28 bg-gray-50">
+              <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-8 lg:flex-row lg:items-stretch lg:gap-24 lg:px-12">
+                <motion.div
+                  className="relative flex items-center justify-center flex-shrink-0 lg:order-1"
+                  initial={{ opacity: 0, x: 80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
+                >
+                  <TiltCard className="block">
+                    <div className="relative h-80 w-80 md:h-116 md:w-116 overflow-hidden rounded-full">
+                      <Image src="/Ghost employees.png" alt="Worker at biometric gate" fill className="object-cover object-center" sizes="(max-width: 1024px) 360px, 480px" />
+                    </div>
+                  </TiltCard>
+                </motion.div>
+                <motion.div
+                  className="flex flex-1 flex-col justify-center text-center lg:order-2 lg:text-left"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
+                >
+                  <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+                    No More Ghost Employees — <br /> Just Verified Workforce
+                  </h2>
+                  <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
+                    Eliminate ghost employees with biometric authentication, real-time tracking, and geofencing. Automated payroll and audit trails ensure accurate records, prevent fraud, and keep your workforce fully compliant.
+                  </p>
+                  <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
+                    <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
+                      Start A Project
+                    </Link>
+                    <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                      </span>
+                      <span className="font-button">Call Us: 08027745220</span>
+                    </a>
+                    <span className="text-sm font-body text-gray-500">For any question</span>
+                  </div>
+                </motion.div>
               </div>
-            </motion.div>
+            </section>
+
+            {/* Prevent Pilferage */}
+            <section className="relative py-5 bg-gray-50 border-t border-gray-100">
+              <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-8 lg:flex-row lg:items-center lg:gap-24 lg:px-12">
+                <motion.div
+                  className="flex flex-1 flex-col justify-center text-center lg:text-left"
+                  initial={{ opacity: 0, x: 80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
+                >
+                  <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+                    Prevent Pilferage With Smart <br /> Access Control
+                  </h2>
+                  <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
+                    Ensure only authorized personnel access your premises with real-time movement tracking and intelligent, contract-based entry rules. Our system helps prevent pilferage, reduce theft, and eliminate misuse of resources.
+                  </p>
+                  <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
+                    <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
+                      Start A Project
+                    </Link>
+                    <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg></span>
+                      <span className="font-button">Call Us: 08027745220</span>
+                    </a>
+                    <span className="text-sm font-body text-gray-500">For any question</span>
+                  </div>
+                </motion.div>
+                <motion.div
+                  className="relative flex items-center justify-center flex-shrink-0"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
+                >
+                  <TiltCard className="block">
+                    <div className="relative h-80 w-80 md:h-116 md:w-116 overflow-hidden rounded-full">
+                      <Image src="/Pilferage.png" alt="Worker with tablet" fill className="object-cover object-center" sizes="(max-width: 1024px) 360px, 480px" />
+                    </div>
+                  </TiltCard>
+                </motion.div>
+              </div>
+            </section>
+
+            {/* Driving ESG */}
+            <section className="relative py-5 bg-gray-50 border-t border-gray-100">
+              <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-8 lg:flex-row lg:items-center lg:gap-24 lg:px-12">
+                <motion.div
+                  className="relative flex items-center justify-center flex-shrink-0"
+                  initial={{ opacity: 0, x: 80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
+                >
+                  <TiltCard className="block">
+                    <div className="relative h-80 w-80 md:h-116 md:w-116 overflow-hidden rounded-full">
+                      <Image src="/ESG-Aligned Compliance.png" alt="Workers reviewing documents" fill className="object-cover object-center" sizes="(max-width: 1024px) 360px, 480px" />
+                    </div>
+                  </TiltCard>
+                </motion.div>
+                <motion.div
+                  className="flex flex-1 flex-col justify-center text-center lg:text-left"
+                  initial={{ opacity: 0, x: -80 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.25 }}
+                  transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
+                >
+                  <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+                    Driving ESG-Aligned <br /> Compliance
+                  </h2>
+                  <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
+                    Stay aligned with region-specific compliance norms and labor laws while fostering a safe and transparent workplace. The system supports ethical labor practices and reinforces the Social and Governance pillars of your ESG commitments.
+                  </p>
+                  <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
+                    <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
+                      Start A Project
+                    </Link>
+                    <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg></span>
+                      <span className="font-button">Call Us: 08027745220</span>
+                    </a>
+                    <span className="text-sm font-body text-gray-500">For any question</span>
+                  </div>
+                </motion.div>
+              </div>
+            </section>
+            <SectionFade><BrandsSlider /></SectionFade>
+         
           </div>
-        </section>
+        </div>
       </SectionFade>
 
-      {/* Prevent Pilferage */}
-      <SectionFade>
-        <section className="relative py-28 lg:py-40 bg-white">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-6 lg:flex-row lg:gap-24 lg:px-12">
-            <motion.div
-              className="flex flex-1 flex-col justify-center text-center lg:text-left"
-              initial={{ opacity: 0, x: 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
-            >
-              <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-                Prevent Pilferage With Smart Access Control
-              </h2>
-              <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
-                Ensure only authorized personnel access your premises with real-time movement tracking and intelligent, contract-based entry rules. Our system helps prevent pilferage, reduce theft, and eliminate misuse of resources.
-              </p>
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
-                  Start A Project
-                </Link>
-                <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg></span>
-                  <span className="font-button">Call Us: 08027745220</span>
-                </a>
-                <span className="text-sm font-body text-gray-500">For any question</span>
-              </div>
-            </motion.div>
-            <motion.div
-              className="relative flex-shrink-0"
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
-            >
-              <TiltCard className="block">
-                <div className="relative aspect-square w-80 overflow-hidden rounded-2xl">
-                  <Image src="/Pilferage.png" alt="Worker with tablet" fill className="object-cover object-center" sizes="(max-width: 1024px) 320px, 448px" />
-                </div>
-              </TiltCard>
-            </motion.div>
-          </div>
-        </section>
-      </SectionFade>
-
-      {/* Driving ESG */}
-      <SectionFade>
-        <section className="relative py-28 lg:py-40 bg-gray-50">
-          <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-6 lg:flex-row lg:gap-24 lg:px-12">
-            <motion.div
-              className="relative flex-shrink-0"
-              initial={{ opacity: 0, x: 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
-            >
-              <TiltCard className="block">
-                <div className="relative aspect-square w-80 overflow-hidden rounded-2xl">
-                  <Image src="/ESG-Aligned Compliance.png" alt="Workers reviewing documents" fill className="object-cover object-center" sizes="(max-width: 1024px) 320px, 448px" />
-                </div>
-              </TiltCard>
-            </motion.div>
-            <motion.div
-              className="flex flex-1 flex-col justify-center text-center lg:text-left"
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.25 }}
-              transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
-            >
-              <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-                Driving ESG-Aligned Compliance
-              </h2>
-              <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
-                Stay aligned with region-specific compliance norms and labor laws while fostering a safe and transparent workplace. The system supports ethical labor practices and reinforces the Social and Governance pillars of your ESG commitments.
-              </p>
-              <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
-                  Start A Project
-                </Link>
-                <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
-                  <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg></span>
-                  <span className="font-button">Call Us: 08027745220</span>
-                </a>
-                <span className="text-sm font-body text-gray-500">For any question</span>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </SectionFade>
-
-      <SectionFade><BrandsSlider /></SectionFade>
+      {/* <SectionFade><BrandsSlider /></SectionFade> */}
 
       {/* Contact */}
-      <SectionFade id="contact" className="relative py-28 lg:py-40 bg-gray-50">
-        <div className="relative mx-auto max-w-3xl px-6 lg:px-12">
-          <FadeUp className="rounded-3xl border border-gray-200 bg-white p-10 shadow-lg lg:p-14">
-            <div className="text-center">
-              <span className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-label uppercase tracking-wider text-blue-700">Get in touch</span>
-              <h2 className="mt-6 text-3xl font-heading-bold tracking-tight text-gray-900 sm:text-4xl">Have Any Questions?</h2>
-              <p className="mt-6 text-base font-body leading-relaxed text-gray-600">
-                Tell us about your workforce and compliance needs. We'll help you find the right solution.
-              </p>
-            </div>
-            <FadeUp delay={0.1} className="mt-10">
+      <SectionFade id="contact" className="relative py-28 lg:py-40 bg-gray-100">
+        <div className="relative mx-auto max-w-5xl px-6 lg:px-12">
+          <FadeUp className="p-8 lg:p-12">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Have Any Questions?</h2>
+            <p className="mt-3 text-base leading-relaxed text-gray-600">
+            Enthusiastically disintermediate one-to-one leadership via business e-commerce. Dramatically reintermediate compelling process improvements rather than empowered relationships.   </p>
+            <FadeUp delay={0.1} className="mt-8">
               <ContactForm />
             </FadeUp>
           </FadeUp>
