@@ -14,6 +14,7 @@ import BrandsSlider from "./components/BrandsSlider";
 import ContactForm from "./components/ContactForm";
 import TiltCard from "./components/TiltCard";
 import SectionFade from "./components/SectionFade";
+import AnimatedCounter from "./components/AnimatedCounter";
 
 const whyCards = [
   {
@@ -64,7 +65,7 @@ export default function Home() {
   const [heroDarkPhase, setHeroDarkPhase] = useState(true);
 
   return (
-    <div className="relative min-h-screen bg-white text-gray-900">
+    <div className="relative min-h-screen bg-white text-gray-900 perspective-page">
       {/* Hero: background + overlay extend behind navbar so navbar blends into hero */}
       <SectionFade>
         <section className="relative min-h-[90vh] overflow-hidden flex flex-col items-center justify-center -mt-[4.5rem] pt-[9rem]">
@@ -123,21 +124,25 @@ export default function Home() {
                   transition={{ duration: 0.45, ease: [0.33, 1, 0.68, 1] }}
                   className="mt-10 flex flex-wrap items-center justify-center gap-4"
                 >
-                  <Link
-                    href="#contact"
-                    className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-3.5 text-base text-white shadow-lg transition hover:bg-blue-600 hover:shadow-xl"
-                  >
-                    Get In Touch
-                    <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Link>
-                  <Link
-                    href="#solutions"
-                    className="btn-secondary inline-flex items-center justify-center rounded-xl bg-gray-700 px-8 py-3.5 text-base text-white shadow-lg transition hover:bg-gray-800"
-                  >
-                    Our Solutions
-                  </Link>
+                  <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
+                    <Link
+                      href="#contact"
+                      className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-3.5 text-base text-white shadow-lg transition hover:bg-blue-600 hover:shadow-xl"
+                    >
+                      Get In Touch
+                      <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  </motion.div>
+                  <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.98 }}>
+                    <Link
+                      href="#solutions"
+                      className="btn-secondary inline-flex items-center justify-center rounded-xl bg-gray-700 px-8 py-3.5 text-base text-white shadow-lg transition hover:bg-gray-800 hover:shadow-lg"
+                    >
+                      Our Solutions
+                    </Link>
+                  </motion.div>
                 </motion.div>
               </motion.div>
             </motion.div>
@@ -159,7 +164,7 @@ export default function Home() {
               InOps combines workforce visibility, airtight compliance, and hardware integration into one platform—so your teams stay focused on operations, not chasing attendance sheets and paperwork.
             </AnimatedParagraph>
           </div>
-          <AnimatedCardGrid className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          <AnimatedCardGrid className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 perspective-3d">
             {whyCards.map((card, index) => {
               const directions: Array<"left" | "right" | "bottom" | "top"> = ["left", "right", "bottom", "top", "left"];
 
@@ -239,26 +244,22 @@ export default function Home() {
           >
             <div className="absolute inset-0">
               <Image src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1200&q=85" alt="Worker at access control" fill className="object-cover" sizes="50vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-white/40 to-transparent" />
+              <div className="absolute inset-0 bg-black/35" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
             </div>
-            <div className="absolute inset-0 flex items-center justify-center p-8 lg:p-12">
-              <div className="relative h-full w-full max-w-sm">
-                <svg className="absolute left-1/2 top-1/2 h-full w-full -translate-x-1/2 -translate-y-1/2" preserveAspectRatio="none">
-                  <line x1="50%" y1="50%" x2="78%" y2="22%" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="8 6" />
-                  <line x1="50%" y1="50%" x2="72%" y2="78%" stroke="rgba(59,130,246,0.5)" strokeWidth="2" strokeDasharray="8 6" />
-                </svg>
-                <div className="absolute right-0 top-0 flex h-24 w-24 items-center justify-center rounded-full border-2 border-white bg-white/95 shadow-xl lg:h-28 lg:w-28">
-                  <div className="text-center text-[10px] font-medium text-gray-700 lg:text-xs">
-                    <span className="block">12:02:49</span>
-                    <span className="block text-gray-500">2024-02-28 Thu</span>
-                  </div>
-                </div>
-                <div className="absolute bottom-0 right-2 flex h-20 w-20 items-center justify-center rounded-full border-2 border-white bg-white/95 shadow-lg lg:h-24 lg:w-24">
-                  <svg className="h-10 w-10 text-blue-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.5}>
-                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" />
-                    <rect x="2" y="10" width="6" height="8" rx="1" /><rect x="16" y="10" width="6" height="8" rx="1" />
+            <div className="absolute inset-0 flex items-center justify-center px-8 py-12 lg:px-12">
+              <div className="max-w-md text-center text-white">
+                <button
+                  type="button"
+                  className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-white/50 bg-white/15 backdrop-blur-sm transition hover:bg-white/25"
+                  aria-label="Play presentation video"
+                >
+                  <svg className="ml-0.5 h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path d="M8 5v14l11-7-11-7z" />
                   </svg>
-                </div>
+                </button>
+                <div className="mt-6 text-sm font-body text-white/90">View Our Presentation Video</div>
+                <div className="mt-1 text-xs font-body text-white/70">In Zero On Clms</div>
               </div>
             </div>
           </motion.div>
@@ -270,41 +271,70 @@ export default function Home() {
             transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
           >
             <motion.span
-              className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium uppercase tracking-wider text-blue-700"
+              className="text-center text-sm font-body-medium tracking-wide text-gray-400"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1], delay: 0.2 }}
             >
-              Hardware + Software
+              We are always ahead
             </motion.span>
             <motion.h2
-              className="mt-6 text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
+              className="mt-3 text-center text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 0.28 }}
             >
-              Smart Contract Labour Management With Integrated Hardware
+              Professional solutions for your business.
             </motion.h2>
             <motion.p
-              className="mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg"
+              className="mx-auto mt-3 max-w-xl text-center text-sm leading-relaxed text-gray-400 sm:text-base"
               initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 0.36 }}
             >
-              Manage your contract workforce efficiently with our software that seamlessly integrates with biometric hardware—including face, card, and fingerprint readers. Track real-time attendance, manage shifts, and generate contractor-wise reports—all from a single platform.
+              We provide premium customer support and offer affordable programs.
             </motion.p>
             <motion.div
-              className="mt-10 flex gap-3"
+              className="mx-auto mt-6 flex gap-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: 0.45 }}
             >
-              <div className="h-1 w-16 rounded-full bg-blue-500" />
-              <div className="h-1 w-8 rounded-full bg-blue-300" />
+              <div className="h-1 w-10 rounded-full bg-emerald-500" />
+            </motion.div>
+
+            <motion.div
+              className="mt-14 grid grid-cols-1 gap-10 text-center sm:grid-cols-3"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1], delay: 0.52 }}
+            >
+              <div>
+                <div className="text-4xl font-heading-bold tracking-tight text-gray-900">
+                  <AnimatedCounter value={856} duration={1.3} delay={0} />
+                </div>
+                <div className="mt-2 text-sm font-body-medium text-gray-500">Satisfied Clients</div>
+                <div className="text-xs font-body text-gray-400">Merits-leading experience</div>
+              </div>
+              <div>
+                <div className="text-4xl font-heading-bold tracking-tight text-gray-900">
+                  <AnimatedCounter value={238} duration={1.3} delay={0.1} />
+                </div>
+                <div className="mt-2 text-sm font-body-medium text-gray-500">Successful Investments</div>
+                <div className="text-xs font-body text-gray-400">Merits-leading experience</div>
+              </div>
+              <div>
+                <div className="text-4xl font-heading-bold tracking-tight text-gray-900">
+                  <AnimatedCounter value={341} duration={1.3} delay={0.2} />
+                </div>
+                <div className="mt-2 text-sm font-body-medium text-gray-500">Satisfied Clients</div>
+                <div className="text-xs font-body text-gray-400">Merits-leading experience</div>
+              </div>
             </motion.div>
           </motion.div>
         </section>
@@ -313,9 +343,9 @@ export default function Home() {
       {/* Scroll to top */}
       <motion.a
         href="#"
-        className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg transition hover:bg-blue-600 hover:shadow-xl"
+        className="fixed bottom-8 right-8 z-40 flex h-12 w-12 items-center justify-center rounded-full bg-blue-500 text-white shadow-lg transition hover:bg-blue-600 hover:shadow-xl btn-glow"
         aria-label="Scroll to top"
-        whileHover={{ scale: 1.08 }}
+        whileHover={{ scale: 1.1, y: -3 }}
         whileTap={{ scale: 0.95 }}
       >
         <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -325,25 +355,29 @@ export default function Home() {
 
       <SectionFade><IndustriesSlider /></SectionFade>
 
+      {/* Feature cards — blog-post style (per reference image) */}
+   
       {/* Feature cards + logo strip (single bordered container) */}
-      <SectionFade>
+      <SectionFade effect="3d">
         <div className="max-w-full">
-          <div className="overflow-hidden rounded-3xl border-2 border-b-0 border-blue-200 bg-white shadow-lg mr-[-5]">
+          <div className="overflow-hidden rounded-3xl border-2 border-b-0 border-blue-200 bg-white shadow-depth-lg mr-[-5] shadow-gray-900/5">
             {/* No More Ghost Employees */}
-            <section className="relative py-20 lg:py-28 bg-gray-50">
+            <section className="relative overflow-hidden bg-gray-50 py-20 lg:py-28">
+              <div className="pointer-events-none absolute -left-24 -top-24 h-72 w-72 rounded-full bg-blue-200/40 blur-3xl" aria-hidden />
+              <div className="pointer-events-none absolute -bottom-32 -right-24 h-80 w-80 rounded-full bg-emerald-200/40 blur-3xl" aria-hidden />
               <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-8 lg:flex-row lg:items-stretch lg:gap-24 lg:px-12">
                 <motion.div
-                  className="relative flex items-center justify-center flex-shrink-0 lg:order-1"
+                  className="relative flex items-center justify-center flex-shrink-0 lg:order-1 animate-float-3d"
                   initial={{ opacity: 0, x: 80 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
                 >
-                  <TiltCard className="block">
+                  {/* <TiltCard className="block"> */}
                     <div className="relative h-80 w-80 md:h-116 md:w-116 overflow-hidden rounded-full">
                       <Image src="/Ghost employees.png" alt="Worker at biometric gate" fill className="object-cover object-center" sizes="(max-width: 1024px) 360px, 480px" />
                     </div>
-                  </TiltCard>
+                  {/* </TiltCard> */}
                 </motion.div>
                 <motion.div
                   className="flex flex-1 flex-col justify-center text-center lg:order-2 lg:text-left"
@@ -352,22 +386,54 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
                 >
+                  <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-blue-200/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-blue-700 shadow-sm backdrop-blur lg:mx-0">
+                    <span className="h-2 w-2 rounded-full bg-blue-500" aria-hidden />
+                    Workforce verification
+                  </div>
                   <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
                     No More Ghost Employees — <br /> Just Verified Workforce
                   </h2>
                   <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
                     Eliminate ghost employees with biometric authentication, real-time tracking, and geofencing. Automated payroll and audit trails ensure accurate records, prevent fraud, and keep your workforce fully compliant.
                   </p>
+                  <ul className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-left text-sm text-gray-700 sm:grid-cols-2">
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Biometric attendance</span> you can audit end‑to‑end.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5 9 6.343 9 8s1.343 3 3 3z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20a7 7 0 10-14 0" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Real people, real shifts</span>—no duplicates.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-indigo-50 text-indigo-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Automatic payroll-ready</span> logs and trails.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l7 4v10l-7 4-7-4V7l7-4z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 7v14" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Geofencing controls</span> for on-site compliance.</span>
+                    </li>
+                  </ul>
                   <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                    <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
-                      Start A Project
-                    </Link>
-                    <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
+                    <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.98 }}>
+                      <Link href="#contact" className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
+                        Start A Project
+                      </Link>
+                    </motion.div>
+                    <motion.a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us" whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }}>
                       <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                         <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                       </span>
                       <span className="font-button">Call Us: 08027745220</span>
-                    </a>
+                    </motion.a>
                     <span className="text-sm font-body text-gray-500">For any question</span>
                   </div>
                 </motion.div>
@@ -375,7 +441,9 @@ export default function Home() {
             </section>
 
             {/* Prevent Pilferage */}
-            <section className="relative py-5 bg-gray-50 border-t border-gray-100">
+            <section className="relative overflow-hidden border-t border-gray-100 bg-gray-50 py-16 lg:py-24">
+              <div className="pointer-events-none absolute -right-32 -top-24 h-80 w-80 rounded-full bg-blue-200/35 blur-3xl" aria-hidden />
+              <div className="pointer-events-none absolute -bottom-32 -left-24 h-72 w-72 rounded-full bg-violet-200/35 blur-3xl" aria-hidden />
               <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-8 lg:flex-row lg:items-center lg:gap-24 lg:px-12">
                 <motion.div
                   className="flex flex-1 flex-col justify-center text-center lg:text-left"
@@ -384,54 +452,88 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
                 >
+                  <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-violet-200/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-violet-700 shadow-sm backdrop-blur lg:mx-0">
+                    <span className="h-2 w-2 rounded-full bg-violet-500" aria-hidden />
+                    Access intelligence
+                  </div>
                   <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
                     Prevent Pilferage With Smart <br /> Access Control
                   </h2>
                   <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
                     Ensure only authorized personnel access your premises with real-time movement tracking and intelligent, contract-based entry rules. Our system helps prevent pilferage, reduce theft, and eliminate misuse of resources.
                   </p>
+                  <ul className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-left text-sm text-gray-700 sm:grid-cols-2">
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 11c1.657 0 3-1.343 3-3S13.657 5 12 5 9 6.343 9 8s1.343 3 3 3z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20a7 7 0 10-14 0 7 7 0 0114 0z" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Authorize by contract</span>, role, or shift window.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Real‑time movement</span> tracking and alerts.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Tamper‑proof logs</span> for investigations.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l7 4v10l-7 4-7-4V7l7-4z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Reduce theft</span> and resource misuse fast.</span>
+                    </li>
+                  </ul>
                   <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                    <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
-                      Start A Project
-                    </Link>
-                    <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
+                    <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.98 }}>
+                      <Link href="#contact" className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
+                        Start A Project
+                      </Link>
+                    </motion.div>
+                    <motion.a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us" whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }}>
                       <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg></span>
                       <span className="font-button">Call Us: 08027745220</span>
-                    </a>
+                    </motion.a>
                     <span className="text-sm font-body text-gray-500">For any question</span>
                   </div>
                 </motion.div>
                 <motion.div
-                  className="relative flex items-center justify-center flex-shrink-0"
+                  className="relative flex items-center justify-center flex-shrink-0 animate-float-3d"
                   initial={{ opacity: 0, x: -80 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
                 >
-                  <TiltCard className="block">
+                  {/* <TiltCard className="block shadow-depth-xl rounded-3xl"> */}
                     <div className="relative h-80 w-80 md:h-116 md:w-116 overflow-hidden rounded-full">
                       <Image src="/Pilferage.png" alt="Worker with tablet" fill className="object-cover object-center" sizes="(max-width: 1024px) 360px, 480px" />
                     </div>
-                  </TiltCard>
+                  {/* </TiltCard> */}
                 </motion.div>
               </div>
             </section>
 
             {/* Driving ESG */}
-            <section className="relative py-5 bg-gray-50 border-t border-gray-100">
+            <section className="relative overflow-hidden border-t border-gray-100 bg-gray-50 py-16 lg:py-24">
+              <div className="pointer-events-none absolute -left-28 -top-28 h-80 w-80 rounded-full bg-emerald-200/35 blur-3xl" aria-hidden />
+              <div className="pointer-events-none absolute -bottom-32 -right-24 h-72 w-72 rounded-full bg-blue-200/35 blur-3xl" aria-hidden />
               <div className="mx-auto flex max-w-7xl flex-col items-center gap-16 px-8 lg:flex-row lg:items-center lg:gap-24 lg:px-12">
                 <motion.div
-                  className="relative flex items-center justify-center flex-shrink-0"
+                  className="relative flex items-center justify-center flex-shrink-0 animate-float-3d"
                   initial={{ opacity: 0, x: 80 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1] }}
                 >
-                  <TiltCard className="block">
+                  {/* <TiltCard className="block shadow-depth-xl rounded-3xl"> */}
                     <div className="relative h-80 w-80 md:h-116 md:w-116 overflow-hidden rounded-full">
                       <Image src="/ESG-Aligned Compliance.png" alt="Workers reviewing documents" fill className="object-cover object-center" sizes="(max-width: 1024px) 360px, 480px" />
                     </div>
-                  </TiltCard>
+                  {/* </TiltCard> */}
                 </motion.div>
                 <motion.div
                   className="flex flex-1 flex-col justify-center text-center lg:text-left"
@@ -440,20 +542,52 @@ export default function Home() {
                   viewport={{ once: true, amount: 0.25 }}
                   transition={{ duration: 0.85, ease: [0.33, 1, 0.68, 1], delay: 0.12 }}
                 >
+                  <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-emerald-200/70 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-wider text-emerald-800 shadow-sm backdrop-blur lg:mx-0">
+                    <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden />
+                    ESG compliance
+                  </div>
                   <h2 className="text-2xl font-heading-bold leading-tight tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
                     Driving ESG-Aligned <br /> Compliance
                   </h2>
                   <p className="mt-8 max-w-xl text-base font-body leading-relaxed text-gray-600 sm:text-lg">
                     Stay aligned with region-specific compliance norms and labor laws while fostering a safe and transparent workplace. The system supports ethical labor practices and reinforces the Social and Governance pillars of your ESG commitments.
                   </p>
+                  <ul className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-left text-sm text-gray-700 sm:grid-cols-2">
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Region‑specific rules</span> and labor law alignment.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l7 4v10l-7 4-7-4V7l7-4z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 7v10" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Audit trails</span> that support governance reporting.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-violet-50 text-violet-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12a9 9 0 0118 0" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Ethical workforce</span> tracking and transparency.</span>
+                    </li>
+                    <li className="flex items-start gap-3 rounded-2xl border border-gray-200/70 bg-white/70 px-4 py-3 shadow-sm shadow-gray-900/5 backdrop-blur">
+                      <span className="mt-0.5 inline-flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-xl bg-orange-50 text-orange-700" aria-hidden>
+                        <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3l7 4v10l-7 4-7-4V7l7-4z" /></svg>
+                      </span>
+                      <span className="leading-snug"><span className="font-semibold">Ready for ESG</span> initiatives and stakeholder trust.</span>
+                    </li>
+                  </ul>
                   <div className="mt-12 flex flex-wrap items-center justify-center gap-6 lg:justify-start">
-                    <Link href="#contact" className="btn-primary inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
-                      Start A Project
-                    </Link>
-                    <a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us">
+                    <motion.div whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.98 }}>
+                      <Link href="#contact" className="btn-primary btn-glow inline-flex items-center justify-center rounded-xl bg-blue-500 px-8 py-4 text-base text-white shadow-md transition hover:bg-blue-600 hover:shadow-lg">
+                        Start A Project
+                      </Link>
+                    </motion.div>
+                    <motion.a href="tel:08027745220" className="btn-secondary flex items-center gap-3 rounded-full border-2 border-blue-200 bg-blue-50 px-5 py-3 text-blue-700 transition hover:border-blue-300 hover:bg-blue-100" aria-label="Call us" whileHover={{ scale: 1.03, y: -1 }} whileTap={{ scale: 0.98 }}>
                       <span className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600"><svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg></span>
                       <span className="font-button">Call Us: 08027745220</span>
-                    </a>
+                    </motion.a>
                     <span className="text-sm font-body text-gray-500">For any question</span>
                   </div>
                 </motion.div>
@@ -464,20 +598,41 @@ export default function Home() {
           </div>
         </div>
       </SectionFade>
-
       {/* <SectionFade><BrandsSlider /></SectionFade> */}
 
       {/* Contact */}
-      <SectionFade id="contact" className="relative py-28 lg:py-40 bg-gray-100">
-        <div className="relative mx-auto max-w-5xl px-6 lg:px-12">
-          <FadeUp className="p-8 lg:p-12">
-            <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">Have Any Questions?</h2>
-            <p className="mt-3 text-base leading-relaxed text-gray-600">
-            Enthusiastically disintermediate one-to-one leadership via business e-commerce. Dramatically reintermediate compelling process improvements rather than empowered relationships.   </p>
-            <FadeUp delay={0.1} className="mt-8">
-              <ContactForm />
-            </FadeUp>
-          </FadeUp>
+      <SectionFade id="contact" className="relative py-28 lg:py-40">
+        <div className="relative">
+          <div className="grid overflow-hidden  lg:grid-cols-[57%_43%]">
+            {/* Left image (separate from form component) */}
+            <div className="relative">
+              <Image
+                src="/Gemini_Generated_Image_6mw0x76mw0x76mw0.png"
+                alt="Request a consultation"
+                fill
+                className=""
+                sizes="(max-width: 1024px) 110vw, 100vw"
+                priority={false}
+              />
+              {/* <div className="absolute inset-0 bg-black/20" aria-hidden /> */}
+            </div>
+
+            {/* Right form */}
+            <div className="p-8 lg:p-12">
+              <FadeUp>
+                <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                  Request a Free Consultation
+                </h2>
+                <p className="mt-3 text-sm leading-relaxed text-gray-500 sm:text-base">
+                  Perspiciatis unde omnis iste natus sit voluptatem accusantium doloremque.
+                </p>
+                <div className="mt-5 h-1 w-10 rounded-full bg-emerald-500" aria-hidden />
+                <FadeUp delay={0.1} className="mt-10">
+                  <ContactForm />
+                </FadeUp>
+              </FadeUp>
+            </div>
+          </div>
         </div>
       </SectionFade>
     </div>

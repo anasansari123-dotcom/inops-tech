@@ -71,3 +71,29 @@ export function StaggerItem({
     </motion.div>
   );
 }
+
+/** Stagger item with 3D flip-in (rotateY) for cards */
+export function StaggerItem3D({
+  children,
+  className,
+  direction = "left",
+}: {
+  children: React.ReactNode;
+  className?: string;
+  direction?: "left" | "right";
+}) {
+  const fromRotate = direction === "left" ? -18 : 18;
+  return (
+    <motion.div
+      className={className}
+      variants={{
+        initial: { opacity: 0, rotateY: fromRotate, y: 24 },
+        whileInView: { opacity: 1, rotateY: 0, y: 0 },
+      }}
+      transition={{ duration: 0.65, ease: smoothEase }}
+      style={{ transformStyle: "preserve-3d", transformOrigin: "center center" }}
+    >
+      {children}
+    </motion.div>
+  );
+}

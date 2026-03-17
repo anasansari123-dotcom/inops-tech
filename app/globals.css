@@ -242,8 +242,54 @@ button, a, [role="button"] {
 .perspective-3d {
   perspective: 1200px;
 }
+.perspective-page {
+  perspective: 1400px;
+  transform-style: preserve-3d;
+}
 .preserve-3d {
   transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* 3D reveal on scroll */
+@keyframes reveal-3d {
+  from {
+    opacity: 0;
+    transform: perspective(1000px) rotateX(12deg) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0);
+  }
+}
+.animate-reveal-3d {
+  animation: reveal-3d 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* Subtle 3D float (for hero / cards) */
+@keyframes float-3d {
+  0%, 100% { transform: translateY(0) translateZ(0) rotateY(0deg); }
+  50% { transform: translateY(-10px) translateZ(8px) rotateY(1deg); }
+}
+.animate-float-3d {
+  animation: float-3d 6s ease-in-out infinite;
+}
+
+/* Glow pulse for CTAs */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 4px 20px -2px rgba(59, 130, 246, 0.35); }
+  50% { box-shadow: 0 6px 28px -2px rgba(59, 130, 246, 0.5); }
+}
+.animate-glow-pulse {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-reveal-3d,
+  .animate-float-3d,
+  .animate-glow-pulse {
+    animation: none;
+  }
 }
 
 /* 3D card - tilt on hover */

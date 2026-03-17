@@ -196,8 +196,16 @@ export function AnimatedCardItem({
       className={className}
       variants={cardDirectionVariants[direction]}
       transition={transitionConfig}
-      whileHover={{ scale: 1.05, transition: { duration: 0.35, ease: [0.33, 1, 0.68, 1] } }}
-      style={{ transformOrigin: "center center" }}
+      whileHover={{
+        scale: 1.03,
+        y: -6,
+        rotateY: 3,
+        transition: { duration: 0.35, ease: [0.33, 1, 0.68, 1] },
+      }}
+      style={{
+        transformOrigin: "center center",
+        transformStyle: "preserve-3d",
+      }}
     >
       {children}
     </motion.div>
