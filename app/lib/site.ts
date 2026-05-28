@@ -55,9 +55,11 @@ export const OFFICE_GEO = {
   longitude: 77.6835529,
 } as const;
 
+/** Brand terms — homepage only (avoids inner pages competing on "inops" navigational queries). */
+export const KEYWORDS_BRAND = ["InOps", "InOps Solutions"] as const;
+
 export const KEYWORDS_BASE = [
-  "InOps",
-  "InOps Solutions",
+  ...KEYWORDS_BRAND,
   "CLMS software",
   "contract labour management system",
   "contract labor management India",
@@ -80,7 +82,7 @@ export const KEYWORDS_BASE = [
  */
 export const SCHEMA_SITE_NAV_PAGES = [
   {
-    path: "/hris",
+    path: "/clms",
     name: "Contract Labour Management",
     description: "Automate payroll, PF/ESI & biometric attendance",
   },

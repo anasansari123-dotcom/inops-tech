@@ -1,12 +1,14 @@
-import { SITE_NAME, absoluteUrl } from "@/app/lib/site";
+import { SITE_NAME, absoluteUrl, getSiteUrl } from "@/app/lib/site";
 
 type Props = {
   name: string;
   description: string;
   path: string;
+  pageTitle?: string;
 };
 
 export default function SoftwareApplicationJsonLd({ name, description, path }: Props) {
+  const siteUrl = getSiteUrl();
   const url = absoluteUrl(path);
   const payload = {
     "@context": "https://schema.org",
@@ -16,21 +18,15 @@ export default function SoftwareApplicationJsonLd({ name, description, path }: P
     url,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
+    isPartOf: { "@id": `${absoluteUrl(path)}#webpage` },
+    mainEntityOfPage: { "@id": `${url}#webpage` },
     offers: {
       "@type": "Offer",
       url: absoluteUrl("/contact"),
       availability: "https://schema.org/OnlineOnly",
-      seller: {
-        "@type": "Organization",
-        name: SITE_NAME,
-        url: absoluteUrl("/"),
-      },
+      seller: { "@id": `${siteUrl}/#organization` },
     },
-    provider: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: absoluteUrl("/"),
-    },
+    provider: { "@id": `${siteUrl}/#organization` },
   };
 
   return (
