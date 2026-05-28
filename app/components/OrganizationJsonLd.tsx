@@ -103,6 +103,8 @@ export default function OrganizationJsonLd() {
       description: DEFAULT_DESCRIPTION,
       publisher: { "@id": `${siteUrl}/#organization` },
       inLanguage: "en-IN",
+      about: { "@id": `${siteUrl}/#organization` },
+      mainEntity: { "@id": `${siteUrl}/#organization` },
       significantLink: sitelinkUrls,
       hasPart: [
         ...navWebPages.map((p) => ({ "@id": p["@id"] as string })),

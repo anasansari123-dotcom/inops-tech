@@ -20,6 +20,8 @@ export default function SoftwareApplicationJsonLd({ name, description, path }: P
     url,
     applicationCategory: "BusinessApplication",
     operatingSystem: "Web",
+    isPartOf: { "@id": `${url}#webpage` },
+    mainEntityOfPage: { "@id": `${url}#webpage` },
     offers: {
       "@type": "Offer",
       url: absoluteUrl("/contact"),

@@ -1,9 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import ClientShell from "./components/ClientShell";
 import OrganizationJsonLd from "./components/OrganizationJsonLd";
 import {
   DEFAULT_DESCRIPTION,
@@ -13,23 +10,19 @@ import {
   TWITTER_HANDLE,
   defaultOgImageUrl,
   getSiteUrl,
-  SITE_ICON_PATH,
   siteIconUrl,
 } from "@/app/lib/site";
+import LayoutWrapper from "./components/LayoutWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
-  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
-  display: "swap",
-  preload: false,
 });
 
 const siteUrl = getSiteUrl();
@@ -38,10 +31,6 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f2f57" },
-  ],
 };
 
 const ogImage = defaultOgImageUrl();
@@ -51,7 +40,7 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   title: {
     default: HOME_PAGE_TITLE,
-    /** Child layouts set full titles (e.g. "About Us | InOps Solutions"); avoid double suffix. */
+    /** Child layouts set full titles; avoid double suffix. */
     template: "%s",
   },
   description: DEFAULT_DESCRIPTION,
@@ -60,19 +49,6 @@ export const metadata: Metadata = {
   creator: SITE_NAME,
   publisher: SITE_NAME,
   category: "business",
-  icons: {
-    icon: [
-      { url: SITE_ICON_PATH, type: "image/png", sizes: "32x32" },
-      { url: SITE_ICON_PATH, type: "image/png", sizes: "192x192" },
-    ],
-    shortcut: SITE_ICON_PATH,
-    apple: [{ url: SITE_ICON_PATH, sizes: "180x180", type: "image/png" }],
-  },
-  appleWebApp: {
-    capable: true,
-    title: SITE_NAME,
-    statusBarStyle: "default",
-  },
   formatDetection: {
     email: false,
     address: false,
@@ -95,6 +71,20 @@ export const metadata: Metadata = {
   ...(process.env.GOOGLE_SITE_VERIFICATION
     ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
     : {}),
+  icons: {
+    icon: [
+      { url: "/favicon.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.png"],
+  },
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+    statusBarStyle: "default",
+  },
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -117,7 +107,7 @@ export const metadata: Metadata = {
     creator: TWITTER_HANDLE,
     title: HOME_PAGE_TITLE,
     description: DEFAULT_DESCRIPTION,
-    images: [{ url: ogImage, alt: `${SITE_NAME} — workforce compliance platform` }],
+    images: [ogImage],
   },
   other: {
     "msapplication-TileImage": siteIconUrl(),
@@ -130,34 +120,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en-IN"
-      className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`}
-      data-scroll-behavior="smooth"
-      suppressHydrationWarning
-    >
+    <html lang="en-IN" className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`} suppressHydrationWarning>
+      <head>
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+      </head>
       <body
         className="flex min-h-screen flex-col overflow-x-hidden bg-white font-sans text-gray-900 antialiased"
         suppressHydrationWarning
       >
         <OrganizationJsonLd />
-        <ClientShell>
-          <div className="site-shell relative flex min-h-screen w-full flex-col">
-            <div className="brand-shape-canvas" aria-hidden>
-              <div className="brand-shape brand-shape--top-left" />
-              <div className="brand-shape brand-shape--top-right" />
-              <div className="brand-shape brand-shape--mid-right" />
-              <div className="brand-shape brand-shape--bottom-left" />
-            </div>
-            <Navbar />
-            <main className="inops-template relative z-[1] min-w-0 flex-1 font-sans">
-              {children}
-            </main>
-            <div className="relative z-[1]">
-              <Footer />
-            </div>
-          </div>
-        </ClientShell>
+        <LayoutWrapper>{children}</LayoutWrapper>
       </body>
     </html>
   );

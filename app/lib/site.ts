@@ -58,9 +58,11 @@ export const OFFICE_GEO = {
   longitude: 77.6835529,
 } as const;
 
+/** Brand terms — homepage only (avoids inner pages competing on "inops" navigational queries). */
+export const KEYWORDS_BRAND = ["InOps", "InOps Solutions"] as const;
+
 export const KEYWORDS_BASE = [
-  "InOps",
-  "InOps Solutions",
+  ...KEYWORDS_BRAND,
   "CLMS software",
   "contract labour management system",
   "contract labor management India",
@@ -83,17 +85,17 @@ export const KEYWORDS_BASE = [
  */
 export const SCHEMA_SITE_NAV_PAGES = [
   {
-    path: "/solutions/labourmanagement",
+    path: "/clms",
     name: "Contract Labour Management",
     description: "Automate payroll, PF/ESI & biometric attendance",
   },
   {
-    path: "/solutions/ewa",
+    path: "/ewa",
     name: "Earned Wage Access (EWA)",
     description: "On-demand wages for factory workers",
   },
   {
-    path: "/product/biometric-access-control",
+    path: "/face",
     name: "Biometric Access Control",
     description: "Face readers, turnstiles & attendance hardware",
   },
@@ -143,7 +145,8 @@ export function siteIconUrl(): string {
 export const SITEMAP_LAST_MODIFIED: Record<string, string> = {
   "/": "2026-05-01",
   "/contact": "2026-05-01",
-  "/solutions/labourmanagement": "2026-04-15",
-  "/solutions/ewa": "2026-04-15",
-  "/product/biometric-access-control": "2026-04-15",
+  "/clms": "2026-04-15",
+  "/hris": "2026-04-15",
+  "/ewa": "2026-04-15",
+  "/face": "2026-04-15",
 };

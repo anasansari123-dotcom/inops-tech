@@ -6,6 +6,7 @@ import {
   defaultOgImageUrl,
   getSiteUrl,
   KEYWORDS_BASE,
+  KEYWORDS_BRAND,
 } from "@/app/lib/site";
 
 type RouteMetaInput = {
@@ -13,6 +14,11 @@ type RouteMetaInput = {
   description: string;
   path: string;
   extraKeywords?: string[];
+  /**
+   * When false (default), omits "InOps" / "InOps Solutions" from meta keywords so inner pages
+   * do not compete with the homepage on navigational brand queries.
+   */
+  includeBrandKeywords?: boolean;
   /** Set false for internal/utility routes. Defaults to true. */
   index?: boolean;
 };
@@ -29,6 +35,10 @@ const defaultRobots: Metadata["robots"] = {
   },
 };
 
+const KEYWORDS_WITHOUT_BRAND = KEYWORDS_BASE.filter(
+  (k) => !(KEYWORDS_BRAND as readonly string[]).includes(k),
+);
+
 /**
  * Per-route metadata with canonical URL, OG/Twitter, and keyword list (includes global + route terms).
  */
@@ -37,11 +47,15 @@ export function routeMetadata({
   description,
   path,
   extraKeywords = [],
+  includeBrandKeywords = false,
   index = true,
 }: RouteMetaInput): Metadata {
   const canonical = path.startsWith("/") ? path : `/${path}`;
   const og = defaultOgImageUrl();
-  const keywords = [...KEYWORDS_BASE, ...extraKeywords];
+  const keywords = [
+    ...(includeBrandKeywords ? KEYWORDS_BASE : KEYWORDS_WITHOUT_BRAND),
+    ...extraKeywords,
+  ];
   const canonicalAbsolute = absoluteUrl(canonical);
   const siteUrl = getSiteUrl();
 

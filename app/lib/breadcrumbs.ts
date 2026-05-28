@@ -13,18 +13,18 @@ const LABEL_BY_PATH: Record<string, string> = {
   "/contact": "Contact",
   "/blog": "Blog",
   "/brochures": "Brochures",
-  "/product/biometric-access-control": "Biometric Access Control",
-  "/product/turnstiles": "Turnstiles",
-  "/product/accessories": "Accessories",
-  "/solutions/labourmanagement": "Contract Labour Management",
-  "/solutions/ewa": "Earned Wage Access (EWA)",
-  "/solutions/payroll-solutions": "Payroll & Workforce Governance",
-  "/solutions/time-and-attendance": "Time & Attendance",
-  "/solutions/canteen-management": "Canteen & Visitor Management",
-  "/solutions/mobile-app": "Mobile Workforce App",
-  "/solutions/enterprise-solution": "Enterprise Solution",
-  "/solutions/visitor-management": "Visitor Management",
-  "/solutions/fixed-asset-management": "Fixed Asset Management",
+  "/face": "Biometric Access Control",
+  "/turnstiles": "Turnstiles",
+  "/accessories": "Accessories",
+  "/clms": "Contract Labour Management",
+  "/hris": "HR Information System",
+  "/ewa": "Earned Wage Access (EWA)",
+  "/cctv": "Time & Attendance",
+  "/canteen-and-visitor": "Canteen & Visitor Management",
+  "/mobile-app": "Mobile Workforce App",
+  "/enterprise-solution": "Enterprise Solution",
+  "/visitor-management": "Visitor Management",
+  "/fixed-asset-management": "Fixed Asset Management",
 };
 
 export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
@@ -44,11 +44,24 @@ export function getBreadcrumbsForPath(pathname: string): BreadcrumbItem[] {
   const label = LABEL_BY_PATH[normalized];
   if (!label) return [HOME];
 
-  if (normalized.startsWith("/solutions/")) {
+  const solutionPaths = new Set([
+    "/clms",
+    "/hris",
+    "/ewa",
+    "/cctv",
+    "/canteen-and-visitor",
+    "/mobile-app",
+    "/enterprise-solution",
+    "/visitor-management",
+    "/fixed-asset-management",
+  ]);
+  const productPaths = new Set(["/face", "/turnstiles", "/accessories"]);
+
+  if (solutionPaths.has(normalized)) {
     return [HOME, { name: "Solutions", path: "/#solutions" }, { name: label, path: normalized }];
   }
-  if (normalized.startsWith("/product/")) {
-    return [HOME, { name: "Products", path: "/product/biometric-access-control" }, { name: label, path: normalized }];
+  if (productPaths.has(normalized)) {
+    return [HOME, { name: "Products", path: "/face" }, { name: label, path: normalized }];
   }
 
   return [HOME, { name: label, path: normalized }];

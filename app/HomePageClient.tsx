@@ -134,47 +134,52 @@ type WhyCard = {
   text: string;
   badge?: string;
   imageUrl: string;
+  description?:string;
   href: string;
   icon?: "chart" | "lock" | "gear" | "integration" | "doc";
 };
 
 const whyCardHrefByTitle: Record<string, string> = {
-  "Identity solution": "/solutions/mobile-app",
-  HRIS: "/solutions/labourmanagement",
-  "Contract workforce governance": "/solutions/payroll-solutions",
-  "Logistics Solutions": "/solutions/enterprise-solution",
-  EWA: "/solutions/ewa",
+  "Identity Solution": "/mobile-app",
+  HRIS: "/hris",
+  "Contract Workforce Governance": "/clms",
+  "Logistics Solutions": "/enterprise-solution",
+  EWA: "/ewa",
 };
 
 /** Contract workforce governance is default featured → numbered from 01. */
 const whyCards: WhyCard[] = [
   {
-    title: "Contract workforce governance",
-    badge: "Workforce system",
+    title: "Contract Workforce Governance",
+    badge: "CLMS platform",
+    description:"Contract Workforce Governance",
     imageUrl: whySectionCardImages[2],
-    href: whyCardHrefByTitle["Contract workforce governance"],
+    href: whyCardHrefByTitle["Contract Workforce Governance"],
     text: "Real-time dashboards for plant, HR, and leadership, so every team sees the same source of truth.",
     icon: "chart",
   },
   {
     title: "HRIS",
     badge: "HR platform",
+    description:" HR Information System",
     imageUrl: whySectionCardImages[1],
     href: whyCardHrefByTitle.HRIS,
     text: "Centralise attendance, shifts, compliance, and reporting so operations stays audit-ready without spreadsheets.",
     icon: "gear",
   },
   {
-    title: "Identity solution",
+    title: "Identity Solution",
     badge: "Face + access",
+    description:"Identity Solution",
     imageUrl: whySectionCardImages[0],
-    href: whyCardHrefByTitle["Identity solution"],
+    href: whyCardHrefByTitle["Identity Solution"],
     text: "Cut queues and stop buddy punching with fast, accurate identity verification across devices and cameras.",
     icon: "lock",
   },
   {
     title: "Logistics Solutions",
-    badge: "Enterprise solutions",
+    badge: "Logistics",
+    description:"Delivery Management Solution",
     imageUrl: whySectionCardImages[3],
     href: whyCardHrefByTitle["Logistics Solutions"],
     text: "Roll out across multiple sites with controls, logs, and workflows designed for large industrial operations.",
@@ -182,7 +187,8 @@ const whyCards: WhyCard[] = [
   },
   {
     title: "EWA",
-    badge: "Financial wellness",
+    badge: "EWA",
+    description:"Financial Wellness",
     imageUrl: whySectionCardImages[4],
     href: whyCardHrefByTitle.EWA,
     text: "Give employees flexible access to earned wages while keeping payroll controls and compliance intact.",
@@ -197,7 +203,7 @@ function whyCardNumber(title: string): string {
   return String(idx + 1).padStart(2, "0");
 }
 
-const defaultWhyFeaturedTitle = "Contract workforce governance";
+const defaultWhyFeaturedTitle = "Contract Workforce Governance";
 
 function buildWhyOrder(featuredTitle = defaultWhyFeaturedTitle) {
   const titles = whyCards.map((c) => c.title);
@@ -225,7 +231,7 @@ export default function Home() {
   };
   const [activeHeroIndex, setActiveHeroIndex] = useState(0);
   const activeHeroSlide = heroSlides[activeHeroIndex];
-  const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/solutions/payroll-solutions";
+  const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/clms";
 
   useEffect(() => {
     const href = heroSlides[0]?.src;
@@ -337,15 +343,15 @@ export default function Home() {
                         </h1>
                       ) : activeHeroSlide?.layout === "seo-stack" ? (
                         <>
-                          <h1
-                            className={`home-hero-seo-h1 home-display-heading relative mx-auto px-2 antialiased${
+                          <div className="home-hero-font">
+                            <h1
+                            className={`home-hero-font home-hero-seo-h1  relative mx-auto px-2 antialiased${
                               activeHeroSlide.seoHeadingVariant === "line"
                                 ? " home-hero-seo-h1--line"
                                 : " home-hero-seo-h1--tag max-w-[min(100%,36rem)]"
                             }`}
-                          >
-                            {activeHeroSlide.seoHeading}
-                          </h1>
+                          >{activeHeroSlide.seoHeading}</h1>
+                          </div>
                           <h2 className="home-display-heading inops-type-hero relative mx-auto mt-2 max-w-[min(100%,44rem)] bg-gradient-to-br from-white via-sky-100 to-cyan-100 bg-clip-text px-2 font-heading-bold text-transparent drop-shadow-[0_2px_14px_rgba(0,0,0,0.42)] sm:mt-3 lg:max-w-[58rem] antialiased">
                             {activeHeroSlide.headline}
                           </h2>
@@ -509,7 +515,7 @@ export default function Home() {
                 transition={{ duration: 2.6, repeat: Infinity, ease: "easeInOut" }}
               >
                 <AnimatedHeading as="h2" className="home-display-heading text-3xl font-semibold tracking-tight text-gray-900 sm:text-4xl">
-                  Workforce governance
+                  Workforce Governance
                 </AnimatedHeading>
               </motion.div>
             </motion.div>
@@ -667,7 +673,7 @@ export default function Home() {
                             <div className="mt-2 inline-flex w-fit rounded-full border border-blue-100 bg-blue-50 px-2 py-0.5 text-xs font-semibold uppercase tracking-wide text-blue-700">
                               {card.badge ?? "Capability"}
                             </div>
-                            <div className={`mt-1.5 line-clamp-2 ${inopsUi.typeCardTitle} leading-snug`}>{card.title}</div>
+                            <div className={`mt-1.5 line-clamp-2 ${inopsUi.typeCardTitle} leading-snug`}>{card.description || card.title}</div>
                           </div>
                         </div>
                       </button>
