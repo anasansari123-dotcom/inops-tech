@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Mobile App Solution | InOps Solutions",
+  title: "Mobile Workforce App | Attendance & Self-Service",
   description:
     "Mobile app for attendance, leave, shift visibility, and employee self-service with real-time sync across HR and operations teams.",
   path: "/mobile-app",

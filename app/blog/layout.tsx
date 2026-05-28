@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Blog | InOps Solutions",
+  title: "Blog | Workforce, CLMS & Compliance Insights",
   description:
     "Insights on biometric attendance, access control, CLMS, visitor management, payroll compliance, and HR technology, written from our Bengaluru team.",
   path: "/blog",

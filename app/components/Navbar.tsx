@@ -47,6 +47,7 @@ const resourceRoutes: Record<string, string> = {
 
 function pathUsesSolidNavBar(path: string) {
   return (
+    path.startsWith("/contact") ||
     path.startsWith("/ewa") ||
     path.startsWith("/about") ||
     path.startsWith("/product") ||

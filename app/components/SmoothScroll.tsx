@@ -9,14 +9,17 @@ type Props = {
 type LenisClass = (typeof import("lenis"))["default"];
 type LenisInstance = InstanceType<LenisClass>;
 
-function getReducedMotion(): boolean {
-  if (typeof window === "undefined") return false;
-  return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+function shouldSkipSmoothScroll(): boolean {
+  if (typeof window === "undefined") return true;
+  if (window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches) return true;
+  // Lenis adds main-thread work; native scroll is faster on small screens.
+  if (window.matchMedia?.("(max-width: 768px)")?.matches) return true;
+  return false;
 }
 
 export default function SmoothScroll({ children }: Props) {
   useEffect(() => {
-    if (getReducedMotion()) return;
+    if (shouldSkipSmoothScroll()) return;
 
     let lenis: LenisInstance | null = null;
     let rafId = 0;

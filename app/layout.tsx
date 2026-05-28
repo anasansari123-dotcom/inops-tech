@@ -122,6 +122,8 @@ export default function RootLayout({
   return (
     <html lang="en-IN" className={`${inter.variable} ${geistMono.variable} overflow-x-hidden`} suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://images.unsplash.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />

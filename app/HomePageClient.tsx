@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import "./home-visual.css";
 import HeroBackgroundSlider from "./components/HeroBackgroundSlider";
@@ -17,7 +17,8 @@ const BusinessImpactSection = dynamic(() => import("./components/BusinessImpactS
 const FeaturesSlider = dynamic(() => import("./components/FeaturesSlider"));
 const IndustriesSlider = dynamic(() => import("./components/IndustriesSlider"));
 const CollaborateCtaBand = dynamic(() => import("./components/CollaborateCtaBand"));
-import VideoLivePopups, { type VideoLivePopupItem } from "./components/VideoLivePopups";
+const VideoLivePopups = dynamic(() => import("./components/VideoLivePopups"));
+import type { VideoLivePopupItem } from "./components/VideoLivePopups";
 import ClientMarqueeLogo from "@/app/components/ClientMarqueeLogo";
 import { CLIENT_LOGO_MARQUEE_TRACK, industryLeaderClientLogos } from "@/app/lib/industryLeaderClientLogos";
 import { mediaVideos } from "@/app/lib/mediaAssets";
@@ -233,24 +234,9 @@ export default function Home() {
   const activeHeroSlide = heroSlides[activeHeroIndex];
   const activeHeroSolutionHref = activeHeroSlide?.solutionHref ?? "/clms";
 
-  useEffect(() => {
-    const href = heroSlides[0]?.src;
-    if (!href) return;
-    const link = document.createElement("link");
-    link.rel = "preload";
-    link.as = "image";
-    link.href = href;
-    if (href.startsWith("http")) link.crossOrigin = "anonymous";
-    document.head.appendChild(link);
-    return () => {
-      link.remove();
-    };
-  }, []);
-
   return (
     <div className="home-page home-section-gap relative min-h-screen bg-white text-gray-900 perspective-page">
       {/* Hero: on home, navbar is static above this block; after hero, navbar is fixed + white */}
-      <SectionFade>
         <section
           id="home-hero"
           className="relative -mt-[var(--home-nav-offset)] flex min-h-[calc(100svh-1rem)] flex-col items-center justify-center overflow-hidden bg-white pt-[6.25rem] sm:pt-[7rem] noise-overlay"
@@ -406,7 +392,6 @@ export default function Home() {
             </motion.div>
           </div>
         </section>
-      </SectionFade>
 
       <section
         aria-labelledby="hero-trusted-clients-heading"

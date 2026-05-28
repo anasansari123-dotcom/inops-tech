@@ -22,9 +22,7 @@ export default function ScrollRevealEnhancer() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mq.matches) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     let cancelled = false;
     let teardown: (() => void) | undefined;
@@ -53,24 +51,16 @@ export default function ScrollRevealEnhancer() {
             io.unobserve(t);
           });
         },
-        { root: null, rootMargin: "0px 0px -8% 0px", threshold: [0, 0.08, 0.15] },
+        { root: null, rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
       );
 
       sections.forEach((el, i) => {
         const html = el as HTMLElement;
         html.setAttribute("data-site-reveal-from", directions[i % 4]);
         html.classList.add("site-reveal-pending");
-
-        const rect = html.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight * 0.92 && rect.bottom > -48;
-
-        if (inView) {
-          html.classList.add("site-reveal-visible");
-        } else {
-          html.style.transitionDelay = `${Math.min(ioIndex * 0.05, 0.45)}s`;
-          ioIndex += 1;
-          io.observe(html);
-        }
+        html.style.transitionDelay = `${Math.min(ioIndex * 0.05, 0.45)}s`;
+        ioIndex += 1;
+        io.observe(html);
 
         cleanups.push(() => {
           io.unobserve(html);
@@ -83,8 +73,7 @@ export default function ScrollRevealEnhancer() {
       main.querySelectorAll("section img").forEach((node) => {
         const img = node as HTMLImageElement;
         if (img.closest("[data-no-site-hover]")) return;
-        const alt = img.getAttribute("alt");
-        if (alt === "") return;
+        if (img.getAttribute("alt") === "") return;
         img.classList.add("site-img-hover");
         imgs.push(img);
       });
@@ -98,21 +87,19 @@ export default function ScrollRevealEnhancer() {
 
     const scheduleIdle =
       typeof requestIdleCallback === "function"
-        ? (cb: () => void) => requestIdleCallback(cb, { timeout: 2000 })
-        : (cb: () => void) => setTimeout(cb, 1);
+        ? (cb: () => void) => requestIdleCallback(cb, { timeout: 3000 })
+        : (cb: () => void) => window.setTimeout(cb, 1500);
 
     const cancelIdle =
       typeof cancelIdleCallback === "function"
         ? (id: number) => cancelIdleCallback(id)
-        : (id: number) => clearTimeout(id);
+        : (id: number) => window.clearTimeout(id);
 
     idleId = scheduleIdle(run) as number;
 
     return () => {
       cancelled = true;
-      if (idleId !== undefined) {
-        cancelIdle(idleId);
-      }
+      if (idleId !== undefined) cancelIdle(idleId);
       teardown?.();
     };
   }, [pathname]);

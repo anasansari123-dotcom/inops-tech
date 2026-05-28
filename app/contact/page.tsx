@@ -13,7 +13,7 @@ const viewport = { once: true, amount: 0.2 };
 const contactBanner = {
   src: "/images/contact-hero.png",
   alt: "InOps support specialist with headset ,  friendly, professional customer assistance",
-  tagline: "Sales, support & partnerships ,  Bengaluru",
+  tagline: "Sales, support & partnerships · Bengaluru",
 } as const;
 
 const contactInfo: {
@@ -61,7 +61,7 @@ export default function ContactPage() {
         aria-hidden
       />
 
-      <section className="relative z-[1] px-4 pb-12 pt-24 sm:px-6 sm:pt-28 lg:px-12 lg:pb-16 lg:pt-28">
+      <section className="relative z-[1] px-4 pb-12 pt-[var(--home-nav-offset)] sm:px-6 lg:px-12 lg:pb-16">
         <div className="mx-auto max-w-7xl">
           <motion.header
             className="relative left-1/2 w-screen max-w-[100vw] -translate-x-1/2 text-center"

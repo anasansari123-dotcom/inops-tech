@@ -34,7 +34,7 @@ export type HeroSlide =
 export const heroSlides: readonly HeroSlide[] = [
   {
     layout: "seo-stack",
-    src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1920&q=80",
+    src: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1280&q=75",
     alt: "Operations team reviewing contract workforce compliance and CLMS dashboards in an enterprise control room",
     seoHeading: "CLMS, CLRA, Compliance",
     headline: "India's Contract Workforce Compliance Platform",
@@ -52,7 +52,7 @@ export const heroSlides: readonly HeroSlide[] = [
   },
   {
     layout: "legacy",
-    src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1920&q=75",
+    src: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?auto=format&fit=crop&w=1280&q=70",
     alt: "Employee reviewing earnings and financial planning documents",
     headline: "Building Financial Resilience for the Workforce",
     solutionHref: "/ewa",

@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Enterprise Solution | InOps Solutions",
+  title: "Enterprise Operations Platform | Assets, Logistics & Warehouse",
   description:
     "Connected operations and intelligent control for enterprise assets, logistics, and warehouse performance with live analytics.",
   path: "/enterprise-solution",

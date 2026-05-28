@@ -1,25 +1,17 @@
 "use client";
 
-import { usePathname } from "next/navigation";
+import dynamic from "next/dynamic";
 import SmoothScroll from "./SmoothScroll";
 import Navbar from "./Navbar";
-import ScrollRevealEnhancer from "./ScrollRevealEnhancer";
-import Footer from "./Footer";
+
+const Footer = dynamic(() => import("./Footer"), { ssr: true });
+const ScrollRevealEnhancer = dynamic(() => import("./ScrollRevealEnhancer"), { ssr: false });
 
 interface LayoutWrapperProps {
   children: React.ReactNode;
 }
 
-export default function LayoutWrapper({
-  children,
-}: LayoutWrapperProps) {
-  const pathname = usePathname();
-
-  // Skip full layout for /ewa
-  // if (pathname === "/ewa") {
-  //   return <>{children}</>;
-  // }
-
+export default function LayoutWrapper({ children }: LayoutWrapperProps) {
   return (
     <SmoothScroll>
       <div className="site-shell relative flex min-h-screen w-full flex-col">

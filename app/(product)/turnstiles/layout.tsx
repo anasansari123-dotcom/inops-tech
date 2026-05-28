@@ -3,7 +3,7 @@ import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = routeMetadata({
-  title: "Turnstiles | InOps Solutions",
+  title: "Turnstiles & Speed Gates | Industrial Access Control",
   description:
     "Tripod turnstiles and lane hardware for access control ,  stainless steel, smooth operation, compact footprint for offices, plants, and campuses in India.",
   path: "/turnstiles",

@@ -130,8 +130,8 @@ export function defaultOgImageUrl(): string {
 /** Full-width brand logo (navbar, marketing). */
 export const BRAND_LOGO_PATH = "/logo.png";
 
-/** Square mark for favicon, app icon, and SERP site icon. */
-export const SITE_ICON_PATH = "/logo1.png";
+/** Square mark for favicon, app icon, JSON-LD logo, and SERP site icon. */
+export const SITE_ICON_PATH = "/favicon.png";
 
 export function logoImageUrl(): string {
   return absoluteUrl(BRAND_LOGO_PATH);
@@ -149,4 +149,6 @@ export const SITEMAP_LAST_MODIFIED: Record<string, string> = {
   "/hris": "2026-04-15",
   "/ewa": "2026-04-15",
   "/face": "2026-04-15",
+  "/cctv": "2026-04-15",
+  "/canteen-and-visitor": "2026-04-15",
 };

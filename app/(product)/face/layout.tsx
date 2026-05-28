@@ -1,3 +1,4 @@
+import ProductSchemaInjector from "@/app/components/ProductSchemaInjector";
 import SecondaryPageJsonLd from "@/app/components/SecondaryPageJsonLd";
 import { routeMetadata } from "@/app/lib/seoMetadata";
 import type { Metadata } from "next";
@@ -12,8 +13,6 @@ export const metadata: Metadata = routeMetadata({
   path: "/face",
   extraKeywords: ["face recognition access control India", "turnstile biometric", "industrial access control"],
 });
-
-import ProductSchemaInjector from "@/app/components/ProductSchemaInjector";
 
 export default function BiometricAccessControlLayout({ children }: { children: React.ReactNode }) {
   return (
