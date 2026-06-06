@@ -11,7 +11,6 @@ import { AnimatedHeading, AnimatedParagraph, AnimatedSection } from "./component
 import LazyInViewVideo from "./components/LazyInViewVideo";
 import { FlyInText } from "./components/FlyInText";
 import SectionFade from "./components/SectionFade";
-import HomeSitelinkQuickNav from "./components/HomeSitelinkQuickNav";
 
 const BusinessImpactSection = dynamic(() => import("./components/BusinessImpactSection"));
 const FeaturesSlider = dynamic(() => import("./components/FeaturesSlider"));
@@ -853,8 +852,6 @@ export default function Home() {
         </section>
       </SectionFade>
       {/* <SectionFade><BrandsSlider /></SectionFade> */}
-
-      <HomeSitelinkQuickNav />
 
       <SectionFade className="relative bg-white pb-6 pt-8 lg:pb-8 lg:pt-10">
         <div className="mx-auto max-w-7xl px-6 lg:px-12">
